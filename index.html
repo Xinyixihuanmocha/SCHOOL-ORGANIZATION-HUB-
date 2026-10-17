@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#172554">
+<title>SO.HUB — School Organization Hub SMAN 7 Manado</title>
+<link rel="icon" type="image/png" id="favicon">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="loginScreen" class="login-wrap">
+ <div class="login-visual">
+  <div class="brand"><img class="brand-logo" alt="Logo SMAN 7 Manado"> <span>SCHOOL ORGANIZATION HUB <span style="opacity:.8">(SO.HUB)</span><span style="display:block;font-size:12px;letter-spacing:2px;opacity:.8;margin-top:3px">SMAN 7 MANADO</span></span></div>
+  <div class="visual-copy"><span class="pill">SPARKS IN IDEAS, SHIELD THE FUTURE</span><h1>Ideamu punya tempat.<br>Gerakanmu punya arti.</h1><p>Ruang digital untuk mengenal organisasi, mengikuti kegiatan, dan menghubungkan siswa dengan pengurus serta pembina.</p>
+   <div class="visual-cards"><div class="visual-mini"><b>07</b><span>Organisasi</span></div><div class="visual-mini"><b>01</b><span>Ruang kolaborasi</span></div><div class="visual-mini"><b>∞</b><span>Ide baik</span></div></div>
+  </div>
+  <div class="visual-foot">School Organization Hub (SO.HUB) · SMAN 7 Manado · Prototype pembelajaran</div>
+ </div>
+ <div class="login-side"><div class="login-card">
+  <span class="eyebrow">Selamat datang kembali</span><h2>Masuk ke SO.HUB</h2><p class="muted">Isi identitas untuk mencoba prototype. Akun pada versi ini belum tersambung ke server.</p>
+  <form id="loginForm">
+   <div class="field"><label for="fullName">Nama lengkap</label><input id="fullName" autocomplete="name" placeholder="Contoh: Jhofan Margani" required minlength="2"></div>
+   <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="nama@email.com" required></div>
+   <div class="field"><label for="birthDate">Tanggal lahir</label><input id="birthDate" type="date" required><small id="birthHint">Tanggal lahir digunakan untuk menampilkan pilihan jenis akun.</small></div>
+   <div class="field"><label for="password">Buat / masukkan kata sandi</label><input id="password" type="password" autocomplete="current-password" placeholder="Minimal huruf besar, kecil, dan angka" required minlength="3" aria-describedby="passwordHint"></div>
+   <div class="password-hint" id="passwordHint"><span id="ruleUpper">○ Huruf besar (A–Z)</span><span id="ruleLower">○ Huruf kecil (a–z)</span><span id="ruleNumber">○ Angka (0–9)</span></div>
+   <div class="field"><label for="role">Masuk sebagai</label><select id="role" required><option value="siswa">Siswa / Anggota</option><option value="pengurus">Pengurus organisasi</option><option value="pembina">Guru pembina</option></select><small id="roleHint">Pilih jenis akun demo.</small></div>
+   <div id="orgField" class="field"><label for="memberOrg">Organisasi kamu</label><select id="memberOrg" required></select><small>Anggota dan pengurus hanya dapat masuk ke grup organisasi yang dipilih.</small></div>
+   <div id="codeField" class="field"><label for="groupCode">Kode masuk grup</label><input id="groupCode" placeholder="Masukkan kode organisasi" autocomplete="off"><small>Untuk prototype, kode sementara sama dengan nama organisasi (huruf besar/kecil tidak berpengaruh).</small></div>
+   <button class="full" type="submit">Masuk ke SO.HUB <span aria-hidden="true">→</span></button>
+  </form>
+  <div class="login-note"><b>Catatan prototype:</b> email dan kata sandi hanya divalidasi di halaman ini, bukan akun sungguhan. Jangan gunakan kata sandi asli. Untuk website nyata diperlukan autentikasi server dan penyimpanan data yang aman.</div>
+ </div></div>
+</section>
+<div id="app" class="app hidden">
+ <aside class="sidebar">
+  <div class="brand"><img class="brand-logo small-logo" alt="Logo SMAN 7 Manado"> <span>SO.HUB<span style="display:block;font-size:9px;letter-spacing:1.5px;opacity:.75;margin-top:2px">SMAN 7 MANADO</span></span></div>
+  <div><div class="nav-label">RUANG KERJA</div><nav class="nav">
+   <button class="active" data-page="home"><span class="nav-icon">⌂</span> Beranda</button>
+   <button data-page="chat"><span class="nav-icon">☏</span> Grup chat</button>
+   <button data-page="calendar"><span class="nav-icon">▦</span> Kegiatan</button>
+   <button data-page="publish" id="publishNav"><span class="nav-icon">＋</span> Kirim informasi</button>
+   <button data-page="review" id="reviewNav"><span class="nav-icon">✓</span> Tinjau publikasi</button>
+   <button data-page="replies" id="repliesNav"><span class="nav-icon">↩</span> Balasan peninjauan</button>
+  </nav></div>
+  <div class="sidebar-bottom">✦ Sparks in Ideas,<br>Shield the Future<br><span style="opacity:.65">School Organization Hub</span></div>
+ </aside>
+ <main class="main">
+  <header class="topbar"><div><h2 class="top-title" id="topTitle">Beranda</h2><div class="top-sub">Pusat informasi organisasi sekolah</div></div><div class="profile"><div class="avatar" id="avatar">JM</div><div class="profile-info"><strong id="profileName">Jhofan Margani</strong><span class="muted" id="profileRole">Siswa / Anggota</span></div><button class="secondary" id="logout">Keluar</button></div></header>
+  <div class="content">
+   <section id="page-home">
+    <div class="welcome"><div class="welcome-copy"><span class="pill">SCHOOL ORGANIZATION HUB</span><h1 id="greeting">Halo! 👋</h1><p>Temukan komunitas yang cocok, ikuti informasi terbaru, dan jadilah bagian dari ide baik di sekolah.</p></div><button class="welcome-cta" onclick="document.getElementById('orgSection').scrollIntoView({behavior:'smooth'})">Jelajahi organisasi ↘</button></div>
+    <div class="stats"><div class="stat"><div class="stat-icon">🏛️</div><div><span>Organisasi sekolah</span><strong>07</strong></div></div><div class="stat"><div class="stat-icon">📣</div><div><span>Informasi publik</span><strong id="postCount">03</strong></div></div><div class="stat"><div class="stat-icon">🔐</div><div><span>Akses grup kamu</span><strong id="groupCount">01</strong></div></div></div>
+    <div class="section-head" id="orgSection"><div><h3>Jelajahi organisasi</h3><p>Pilih kartu untuk melihat visi, misi, dan contoh kegiatan.</p></div><span class="pill">7 ORGANISASI</span></div>
+    <div class="org-grid" id="orgGrid"></div>
+    <div class="section-head"><div><h3>Informasi terbaru</h3><p>Pengumuman yang sudah dipublikasikan oleh pengurus atau pembina.</p></div><span class="pill">PUBLIK</span></div><div id="homePosts" class="posts"></div>
+    <div class="notice">🔒 <b>Privasi informasi:</b> data anggota, diskusi grup, dan informasi internal seharusnya hanya dapat dilihat oleh pihak yang berhak. Prototype ini belum menerapkan keamanan server.</div>
+   </section>
+   <section id="page-chat" class="hidden">
+    <h1 class="page-title">Ruang diskusi</h1><p class="page-intro">Grup organisasi dipisahkan dengan kode. Siswa/anggota dan pengurus hanya dapat membuka satu grup sesuai organisasi yang dipilih saat masuk. Pembina dapat berpindah grup untuk mendampingi organisasi.</p>
+    <div class="panel chat-layout"><div><div class="eyebrow" style="margin-bottom:12px">Grup yang tersedia</div><div class="chat-groups" id="chatGroups"></div><div class="notice" id="chatAccessNote">Akses grup dibatasi berdasarkan organisasi.</div></div><div class="chat-window"><div class="chat-window-head"><strong id="chatTitle">MPK/OSIS</strong><p class="muted small" id="chatSubtitle">Diskusi kegiatan dan program kerja</p></div><div class="messages" id="messages" aria-live="polite"></div><form class="chat-send" id="chatForm"><input id="chatInput" placeholder="Tulis pesan..." autocomplete="off" required><button type="submit">Kirim</button></form></div></div>
+    <div class="notice">💬 Pesan pada demo ini hanya tersimpan sementara di memori halaman. Chat belum real-time dan belum dibagikan ke perangkat lain.</div>
+   </section>
+   <section id="page-calendar" class="hidden">
+    <h1 class="page-title">Kalender kegiatan</h1><p class="page-intro">Lihat program dan kegiatan yang sudah diumumkan. Tanggal yang tampil masih berupa contoh dan dapat diubah sesuai kalender sekolah.</p><div class="panel"><div id="calendarList"></div></div>
+   </section>
+   <section id="page-publish" class="hidden">
+    <h1 class="page-title">Kirim informasi publik</h1><p class="page-intro">Fitur ini hanya untuk pengurus organisasi dan guru pembina. Siswa/anggota tidak dapat mengirim postingan publik. Setiap kiriman pengurus harus disetujui pembina sebelum ditayangkan.</p>
+    <div class="two-col"><div class="panel"><span class="eyebrow">Form publikasi</span><h2 style="margin:8px 0 0">Bagikan informasi</h2><p class="muted small">Lengkapi informasi dengan jelas agar mudah dipahami warga sekolah.</p>
+     <form id="publishForm"><div class="field"><label for="postTitle">Judul informasi</label><input id="postTitle" placeholder="Contoh: Aksi Bersih Lingkungan" required maxlength="90"></div>
+      <div class="form-grid"><div class="field"><label for="postType">Jenis informasi</label><select id="postType"><option>Program kerja</option><option>Event</option><option>Berita sekolah</option></select></div><div class="field"><label for="postOrg">Organisasi</label><select id="postOrg"></select></div></div>
+      <div class="field"><label for="postBody">Deskripsi</label><textarea id="postBody" placeholder="Tulis detail kegiatan atau pengumuman..." required maxlength="1200"></textarea></div><button type="submit">Kirim untuk persetujuan →</button>
+     </form></div><div class="panel"><div class="org-icon">🛡️</div><h3>Alur publikasi</h3><p class="muted" style="font-size:13px;line-height:1.7">Informasi yang dikirim pengurus tidak langsung muncul di beranda. Pembina perlu meninjau isi dan memilih untuk menyetujui atau menolak.</p><ol style="font-size:13px;line-height:2;padding-left:20px"><li>Pengurus mengisi formulir.</li><li>Kiriman masuk ke daftar tinjauan pembina.</li><li>Pembina menyetujui atau menolak.</li><li>Kiriman yang disetujui muncul di beranda publik.</li></ol><div class="notice">Akun siswa/anggota tidak memiliki akses ke formulir ini.</div></div></div>
+   </section>
+   <section id="page-review" class="hidden">
+    <h1 class="page-title">Tinjau publikasi</h1><p class="page-intro">Halaman khusus pembina untuk meninjau informasi dari pengurus sebelum ditampilkan kepada semua pengguna.</p><div id="reviewList"></div>
+   </section>
+   <section id="page-replies" class="hidden">
+    <h1 class="page-title">Balasan peninjauan</h1><p class="page-intro">Riwayat balasan peninjauan otomatis untuk informasi yang kamu kirim. Setiap balasan berisi keputusan dan alasan agar pengurus tahu langkah selanjutnya.</p><div class="notice">🤖 <b>Peninjau AI simulasi:</b> keputusan setuju/tidak setuju pada prototype ini dipilih secara acak dengan alasan contoh. Ini bukan AI sungguhan dan bukan penilaian pembina yang sebenarnya.</div><div id="repliesList"></div>
+   </section>
+   <section id="page-org" class="hidden">
+    <button class="secondary" id="backHome">← Kembali ke beranda</button><div class="org-detail-hero" style="margin-top:16px"><div class="org-icon" id="orgIcon">✦</div><div><span class="eyebrow">PROFIL ORGANISASI</span><h1 id="orgTitle">Organisasi</h1><p id="orgDescription" class="muted" style="line-height:1.7;margin-bottom:0"></p></div></div>
+    <div class="detail-grid"><div class="panel"><h3>🎯 Visi</h3><p id="orgVision" style="line-height:1.75;font-size:14px"></p></div><div class="panel"><h3>🧭 Misi</h3><ul id="orgMission"></ul></div></div><div class="panel" style="margin-top:16px"><h3>✨ Contoh kegiatan</h3><ul id="orgActivities"></ul><p class="small muted">Visi, misi, dan kegiatan ini merupakan contoh untuk prototype. Silakan sesuaikan dengan organisasi di sekolah.</p></div>
+   </section>
+   <div class="footer">SO.HUB SMAN 7 Manado · Sparks in Ideas, Shield the Future · Prototype untuk pembelajaran UX</div>
+  </div>
+ </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
